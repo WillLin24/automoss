@@ -109,7 +109,10 @@ if not is_testing():
         'HOST': os.getenv("DB_HOST"),
         'PORT': '3306',
         'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASSWORD")
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'OPTIONS' : {
+            'unix_socket': '/var/run/mysqld/mysqld.sock'
+        }
     }
 else:
     default_database = {
@@ -118,6 +121,7 @@ else:
     }
 
 DATABASES = {'default': default_database}
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -215,14 +219,14 @@ with capture_in(LANGUAGE_CONTEXT):
         'JS': ('Javascript', 'javascript', ['js'], 'javascript'),  # cjs, mjs
         'PL': ('Perl', 'perl', ['pl', 'plx', 'pm', 'xs', 't', 'pod'], 'perl'),
         'MP': ('MIPS assembly', 'mips', ['asm', 's'], 'x86asm'),
-
+        'VL' : ('Verilog', 'verilog', ['v'], 'verilog'),
+        
         # TODO decide which to add, and add extensions
         # 'LP' : ('Lisp', 'lisp', []),
         # 'HS' : ('Haskell', 'haskell', []),
         # 'VB' : ('Visual Basic', 'vb', []),
         # 'MB' : ('Matlab', 'matlab', []),
-        # 'AA' : ('a8086 assembly', 'a8086', []),
-        # 'VL' : ('Verilog', 'verilog', []),
+        # 'AA' : ('a8086 assembly', 'a8086', []),        
         # 'PS' : ('Pascal', 'pascal', []),
         # 'ML' : ('ML', 'ml', []),
         # 'AD' : ('Ada', 'ada', []),

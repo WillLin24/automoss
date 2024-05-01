@@ -19,6 +19,7 @@ def main():
         connection = pymysql.connect(host=DB_HOST,
                                      user=MYSQL_ADMIN_USER,
                                      password=MYSQL_ADMIN_PASSWORD,
+                                     unix_socket='/var/run/mysqld/mysqld.sock',
                                      cursorclass=pymysql.cursors.DictCursor)
     except pymysql.err.OperationalError as e:
         print('Unable to connect to MYSQL as admin:', e)
